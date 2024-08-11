@@ -11,10 +11,14 @@ module.exports = {
       directory: path.join(__dirname, "public"),
     },
     port: 4000,
+    historyApiFallback: true,
+    hot: true,
+    open:true,
+    compress: true,
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name]-bundle.js",
   },
   module: {
     rules: [
@@ -36,6 +40,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "Remote",
       filename: "remoteEntry.js",
+      // remotes:{
+      //   Host: `Host@http://localhost:3000/remoteEntry.js`
+      // },
       exposes: {
         "./App": "./src/App",
         "./Button": "./src/Button",
