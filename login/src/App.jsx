@@ -1,12 +1,15 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './Home';
+import Main from "./Main";
 
-const App = () => {
-  return (
-    <div>
-      {<h1>None</h1>}
-      <h3>Hello from the other side - Remote App Login Test</h3>
-    </div>
-  );
-};
-
+export const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<Main />}/>
+      {/* POC TESTING COMP Below */}
+      <Route path="/test" element={<Home />}/>
+    </Routes>
+  </Router>
+);
 export default App;

@@ -40,11 +40,11 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "Remote",
       filename: "remoteEntry.js",
-      // remotes:{
-      //   Host: `Host@http://localhost:3000/remoteEntry.js`
-      // },
+      remotes:{
+        Host: `Host@http://localhost:3000/remoteEntry.js`
+      },
       exposes: {
-        "./App": "./src/App",
+        "./Home": "./src/Home",
         "./Button": "./src/Button",
       },
       shared: {
@@ -56,6 +56,10 @@ module.exports = {
         "react-dom": {
           singleton: true,
           requiredVersion: dependencies["react-dom"],
+        },
+        "react-router-dom": {
+          singleton: true,
+          requiredVersion: dependencies["react-router-dom"],
         },
       },
     }),
